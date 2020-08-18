@@ -1,17 +1,18 @@
 import C from "./constants";
-import { allSkiDays, goal } from "./initialState.json";
+import { goal } from "./store/reducers";
 
-//remember that backticks preserve white space
+const state = 10;
+
+const action = {
+  type: C.SET_GOAL,
+  payload: 15,
+};
+
+const nextState = goal(state, action);
 
 console.log(`
-
-    Ski Day Counter
-    ================
-    The goal is ${goal} days.
-    Initially the state holds ${allSkiDays.length} ski days.
-
-    Constants (actions)
-    ---------------------
-    ${Object.keys(C).join("\n     ")}
+    initla goal: ${state}
+    action: ${JSON.stringify(action)}
+    new goal: ${nextState}
 
 `);

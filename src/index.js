@@ -1,14 +1,28 @@
 import C from "./constants";
-import { errors } from "./store/reducers";
+import { allSkiDays } from "./store/reducers";
 
-const state = ["user not authorized", "server feed not found"];
+const state = [
+  {
+    resort: "Kirkwood",
+    date: "2020-12-16",
+    powder: true,
+    backcountry: false,
+  },
+];
 
 const action = {
-  type: C.ADD_ERROR,
-  payload: "cannot connect to server",
+  type: C.ADD_DAY,
+  payload: {
+    resort: "Boreal",
+    date: "2020-12-13",
+    // case to check for duplicate days
+    // date: "2020-12-16",
+    powder: true,
+    backcountry: true,
+  },
 };
 
-const nextState = errors(state, action);
+const nextState = allSkiDays(state, action);
 
 console.log(`
     initial state: ${JSON.stringify(state)}
@@ -16,14 +30,14 @@ console.log(`
     next state: ${JSON.stringify(nextState)}
 `);
 
-const clearAction = {
-  type: C.CLEAR_ERROR,
-  payload: 0,
+const removeAction = {
+  type: C.REMOVE_DAY,
+  payload: "2020-12-13",
 };
 
-const stateAfterCleared = errors(nextState, clearAction);
+const newState = allSkiDays(nextState, removeAction);
 
 console.log(`
-    action: ${JSON.stringify(action)}
-    new state: ${JSON.stringify(stateAfterCleared)}
+    action: ${JSON.stringify(removeAction)}
+    next state: ${JSON.stringify(newState)}
 `);

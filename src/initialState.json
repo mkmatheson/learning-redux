@@ -1,0 +1,28 @@
+{
+  "allSkiDays": [
+    {
+      "resort": "Sundance",
+      "date": "2020-12-01",
+      "powder": true,
+      "backcountry": false
+    },
+    {
+      "resort": "Alta",
+      "date": "2020-11-28",
+      "powder": false,
+      "backcountry": true
+    },
+    {
+      "resort": "Snowbird",
+      "date": "2020-12-07",
+      "powder": true,
+      "backcountry": true
+    }
+  ],
+  "goal": 10,
+  "errors": [],
+  "resortNames": {
+    "fetching": false,
+    "suggestions": ["Sundance", "Squaw Valley", "Steamboat"]
+  }
+}

@@ -1,10 +1,8 @@
 import C from "../constants";
 
-// the argument includes default paramater for state
-export const goal = (state = 10, action) => {
-  if (action.type === C.SET_GOAL) {
-    return parseInt(action.payload);
-  } else {
-    return state;
-  }
-};
+// an arrow function automatically returns whatever is on the other side of the arrow
+export const goal = (state = 10, action) =>
+  action.type === C.SET_GOAL ? parseInt(action.payload) : state;
+
+export const skiDay = (state = null, action) =>
+  action.type === C.ADD_DAY ? action.payload : state;

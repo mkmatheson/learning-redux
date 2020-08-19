@@ -1,9 +1,9 @@
 const path = require("path");
 
 module.exports = {
-  entry: { main: "./src/index.js" },
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "dist/assets"),
+    path: path.resolve("dist/assets"),
     filename: "bundle.js",
     publicPath: "assets",
   },
@@ -19,11 +19,6 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: "babel-loader",
       },
-      //   {
-      //     test: /\.json$/,
-      //     exclude: /(node_modules)/,
-      //     loader: "json-loader",
-      //   },
     ],
   },
 };

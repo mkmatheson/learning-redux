@@ -57,23 +57,6 @@ export const suggestions = (state = [], action) => {
   }
 };
 
-//this combineReducer exists because I need the resortNames to match
-//the structure of my initialState.json
-
-// const resortNames = combineReducers({
-//   fetching,
-//   suggestions,
-// });
-
-// const singleReducer = combineReducers({
-//   allSkiDays,
-//   goal,
-//   errors,
-//   resortNames,
-// });
-
-// export default singleReducer;
-
 export default combineReducers({
   allSkiDays,
   goal,

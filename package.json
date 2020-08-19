@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/webpack-dev-server",
+    "suggestions": "./node_modules/.bin/babel-node ./server --port 3333 --delay 500",
     "challenge-a": "babel-node ./src/challenges/FETCH_RESORT_NAMES.js",
     "challenge-b": "babel-node ./src/challenges/CANCEL_FETCHING.js",
     "challenge-c": "babel-node ./src/challenges/CLEAR_SUGGESTIONS.js",
@@ -23,7 +24,10 @@
   "homepage": "https://github.com/mkmatheson/learning-redux#readme",
   "dependencies": {
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

@@ -1,4 +1,5 @@
 import C from "../constants";
+import { combineReducers } from "redux";
 
 export const goal = (state = 10, action) =>
   action.type === C.SET_GOAL ? parseInt(action.payload) : state;
@@ -45,7 +46,7 @@ export const fetching = (state = false, action) => {
   }
 };
 
-export const suggestions = (state, action) => {
+export const suggestions = (state = [], action) => {
   switch (action.type) {
     case C.CLEAR_SUGGESTIONS:
       return [];
@@ -55,3 +56,30 @@ export const suggestions = (state, action) => {
       return state;
   }
 };
+
+//this combineReducer exists because I need the resortNames to match
+//the structure of my initialState.json
+
+// const resortNames = combineReducers({
+//   fetching,
+//   suggestions,
+// });
+
+// const singleReducer = combineReducers({
+//   allSkiDays,
+//   goal,
+//   errors,
+//   resortNames,
+// });
+
+// export default singleReducer;
+
+export default combineReducers({
+  allSkiDays,
+  goal,
+  errors,
+  resortNames: combineReducers({
+    fetching,
+    suggestions,
+  }),
+});

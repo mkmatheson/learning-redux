@@ -1,43 +1,43 @@
 import C from "./constants";
-import { allSkiDays } from "./store/reducers";
+import appReducer from "./store/reducers";
+import initialState from "./initialState.json";
 
-const state = [
-  {
-    resort: "Kirkwood",
-    date: "2020-12-16",
-    powder: true,
-    backcountry: false,
-  },
-];
-
-const action = {
-  type: C.ADD_DAY,
-  payload: {
-    resort: "Boreal",
-    date: "2020-12-13",
-    // case to check for duplicate days
-    // date: "2020-12-16",
-    powder: true,
-    backcountry: true,
-  },
-};
-
-const nextState = allSkiDays(state, action);
+let state = initialState;
 
 console.log(`
-    initial state: ${JSON.stringify(state)}
-    action: ${JSON.stringify(action)}
-    next state: ${JSON.stringify(nextState)}
+    Initial state
+    =============
+    goal: ${state.goal}
+    resorts: ${JSON.stringify(state.allSkiDays)}
+    fetching: ${state.resortNames.fetching}
+    suggestions: ${state.resortNames.suggestions}
 `);
 
-const removeAction = {
-  type: C.REMOVE_DAY,
-  payload: "2020-12-13",
-};
+state = appReducer(state, {
+  type: C.SET_GOAL,
+  payload: 2,
+});
 
-const newState = allSkiDays(nextState, removeAction);
+state = appReducer(state, {
+  type: C.ADD_DAY,
+  payload: {
+    resort: "Mt. Shasta",
+    date: "2020-11-16",
+    powder: false,
+    backcountry: true,
+  },
+});
+
+state = appReducer(state, {
+  type: C.CHANGE_SUGGESTIONS,
+  payload: ["Mt. Tallac", "Mt. Hood", "Mt. Shasta"],
+});
 
 console.log(`
-    action: ${JSON.stringify(removeAction)}
-    next state: ${JSON.stringify(newState)}
+    Next state
+    =============
+    goal: ${state.goal}
+    resorts: ${JSON.stringify(state.allSkiDays)}
+    fetching: ${state.resortNames.fetching}
+    suggestions: ${state.resortNames.suggestions}
 `);

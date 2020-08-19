@@ -16,6 +16,17 @@ export const removeDay = (date) => {
   };
 };
 
-//I don't need a return statement here because an arrow function
-//returns whatever is on the other side of the arrow
 export const setGoal = (goal) => ({ type: C.SET_GOAL, payload: goal });
+
+export const addError = (error) => ({ type: C.ADD_ERROR, payload: error });
+
+export const clearError = (index) => ({ type: C.CLEAR_ERROR, payload: index });
+
+export const changeSuggestions = (newSuggestions) => ({
+  type: C.CHANGE_SUGGESTIONS,
+  payload: newSuggestions,
+});
+
+export const clearSuggestions = () => ({
+  type: C.CLEAR_SUGGESTIONS,
+});

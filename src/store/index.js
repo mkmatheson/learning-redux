@@ -1,6 +1,7 @@
 import C from "../constants";
 import appReducer from "./reducers";
 import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 //middleware requires creating a function that returns a function that returns a function
 // this higher order function is set up to handle asynchronicity

@@ -3,7 +3,8 @@ const path = require("path");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    path: path.resolve("dist/assets"),
+    path: path.resolve(__dirname, "dist/assets"),
+    // path: "./dist/assets",
     filename: "bundle.js",
     publicPath: "assets",
   },
@@ -20,5 +21,9 @@ module.exports = {
         loader: "babel-loader",
       },
     ],
+  },
+  node: {
+    fs: "empty",
+    module: "empty",
   },
 };

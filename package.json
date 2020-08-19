@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/mkmatheson/learning-redux#readme",
   "dependencies": {
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

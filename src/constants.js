@@ -10,7 +10,4 @@ const constants = {
   CLEAR_SUGGESTIONS: "CLEAR_SUGGESTIONS",
 };
 
-//this object reduces misspelling errors and
-//lets me take advantage of intellisense
-
 export default constants;

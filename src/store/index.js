@@ -36,7 +36,7 @@ const consoleMessages = (store) => {
 
 export default (initialState = {}) => {
   //   return createStore(appReducer, initialState);
-  return applyMiddleware(consoleMessages)(createStore)(
+  return applyMiddleware(thunk, consoleMessages)(createStore)(
     appReducer,
     initialState
   );

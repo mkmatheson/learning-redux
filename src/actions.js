@@ -30,3 +30,20 @@ export const changeSuggestions = (newSuggestions) => ({
 export const clearSuggestions = () => ({
   type: C.CLEAR_SUGGESTIONS,
 });
+
+// thunks are also functions
+// thunks don't return objects directly
+// thunks return other functions
+export const randomGoals = () => (dispatch, getState) => {
+  if (!getState().resortNames.fetching) {
+    dispatch({
+      type: C.FETCH_RESORT_NAMES,
+    });
+
+    setTimeout(() => {
+      dispatch({
+        type: C.CANCEL_FETCHING,
+      });
+    }, 1500);
+  }
+};

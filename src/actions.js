@@ -1,5 +1,6 @@
 import C from "./constants";
-
+import fetch from "isomorphic-fetch";
+import { suggestions } from "./store/reducers";
 //add app logic here
 
 export function addDay(resort, date, powder = false, backcountry = false) {
@@ -46,4 +47,27 @@ export const randomGoals = () => (dispatch, getState) => {
       });
     }, 1500);
   }
+};
+
+export const suggestResortNames = (value) => (dispatch) => {
+  dispatch({
+    type: C.FETCH_RESORT_NAMES,
+  });
+
+  fetch("http://localhost:3333/resorts/" + value)
+    .then((response) => response.json())
+    .then((suggestions) => {
+      dispatch({
+        type: C.CHANGE_SUGGESTIONS,
+        payload: suggestions,
+      });
+    })
+    .catch((error) => {
+      //uses the action, not the action object
+      dispatch(addError(error));
+
+      dispatch({
+        type: C.CANCEL_FETCHING,
+      });
+    });
 };
